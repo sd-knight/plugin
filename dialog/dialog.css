@@ -1,0 +1,12 @@
+.dialog-wrap {position:fixed;z-index:9999;left:0;top:0;bottom:0;right:0;text-align:center;filter:progid:DXImageTransform.Microsoft.gradient(startcolorstr=#7F000000,endcolorstr=#7F000000);background-color:rgba(0,0,0,0.5);}
+.dialog-vam {display:inline-block;width:0;height:100%;vertical-align:middle;}
+.dialog {display:inline-block;position:relative;vertical-align:middle;font-size:16px;background-color:#ffffff;background-clip:content-box;border:6px solid #ccc;border:6px solid rgba(0, 0, 0, 0.3);min-width:300px;}
+.dialog-title {line-height:40px;text-align:left;padding:0 10px;border-bottom:1px solid #ececec;}
+.dialog-close {float:right;font-size:20px;color:#f63;cursor:pointer;}
+.dialog-close:hover {color:#f96;}
+.dialog-body {padding:20px 10px 10px;font-size:16px;}
+.dialog-btns {padding:10px;text-align:center;}
+.dialog-btn {border:0;width:120px;height:38px;line-height:38px;margin-left:20px;font-size:20px;color:#fff;background-color:#f63;cursor:pointer;}
+.dialog-btn.no-ml {margin-left:0;}
+.dialog-btn:hover {opacity:0.8;}
+.dialog-cancel {background-color:#ccc;}
