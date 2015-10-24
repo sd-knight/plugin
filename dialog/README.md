@@ -45,11 +45,11 @@
 
 #### method
 ##### open()
-> 打开dialog
+打开dialog
 ##### close()
-> 关闭dialog
+关闭dialog
 ##### on()
-> 给dialog添加事件
+给dialog添加事件
 ```
   demo.on('click', function(){
     console.log('click');
@@ -67,4 +67,4 @@ or
   })
 ```
 ##### off()
-> 给dialog移除事件
+给dialog移除事件
