@@ -1,11 +1,6 @@
 (function(){
-	var config = {
-		buttons: [{
-			className: 'dialog-btn',
-			text: '确定',
-			trigger: 'close'
-		}]
-	};
+	var config = {};
+	
 	var Template = function (config) {
 		var tpl = '<div class="dialog-vam"></div>'+
 								'<div class="dialog">';
@@ -45,7 +40,10 @@
 		}
 		this.tpl = Template(this.config);
 		this.event = {};
-		this.open();
+	}
+
+	Dialog.setConfig = function (setting) {
+		assign(config, setting);
 	}
 
 	Dialog.prototype = {
@@ -65,6 +63,7 @@
 				}
 			}
 			document.body.appendChild(this.dom);
+			return this;
 		},
 		close: function () {
 			document.body.removeChild(this.dom);
@@ -77,14 +76,31 @@
 			}else if(typeof type == 'string' && typeof fn == 'function') {
 				this.event[type] = fn;
 			}
+			return this;
 		},
 		off: function (type) {
 			this.event[type] = null;
+			return this;
 		},
+		changeBody: function(htmlstr) {
+			var body;
+			if (this.dom) {
+				if (document.getElementsByClassName) {
+					body = this.dom.getElementsByClassName('dialog-body')[0];
+				} else if (document.querySelector) {
+					body = this.dom.querySelector('.dialog-body');
+				}
+				body.innerHTML = htmlstr;
+			} else {
+				this.config.body = htmlstr;
+				this.tpl = Template(this.config);
+			}
+			return this;
+		}
 	}
 
 	if (typeof define != 'undefined' && define.amd) {
-		define('dialog', function(){
+		define(function(){
 			return Dialog;
 		});
 	} else if (typeof module != 'undefined' && module.exports) {
