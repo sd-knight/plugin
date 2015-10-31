@@ -1,5 +1,7 @@
 (function(){
-	var config = {};
+	var config = {
+		body: 'Hello, World :)'
+	};
 	
 	var Template = function (config) {
 		var tpl = '<div class="dialog-vam"></div>'+
@@ -8,9 +10,13 @@
 				tpl += '<div class="dialog-body">' + config.body + '</div>';
 				if (config.buttons) {
 					tpl += '<div class="dialog-btns">';
-					for (var i = 0; i < config.buttons.length; i++) {
-						var btn = config.buttons[i];
-						tpl += '<button type="button" trigger="'+btn.trigger+'" class="'+(btn.className?btn.className:'dialog-btn')+(i==0?' no-ml':'')+'">'+btn.text+'</button>';
+					for (var i = 0, btn; i < config.buttons.length; i++) {
+						btn = config.buttons[i];
+						if (btn.type == 'link') {
+							tpl += '<a href="'+btn.href+'"'+(btn.target?' target="'+btn.target+'"':'') +'" class="'+(btn.className?btn.className:'dialog-btn')+(i==0?' no-ml':'')+'">'+btn.text+'</a>'
+						} else {
+							tpl += '<button type="button" trigger="'+btn.trigger+'" class="'+(btn.className?btn.className:'dialog-btn')+(i==0?' no-ml':'')+'">'+btn.text+'</button>';
+						}
 					}
 					tpl += '</div>';
 				}
