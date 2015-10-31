@@ -33,15 +33,24 @@
       close: true //标题是否带关闭icon
     },
     body: '模板字符串',
-    buttons: [  //数值形式
+    buttons: [  //数组形式
       {
         text: '按钮文字',
         className: 'class-name',  //按钮添加的类名
         trigger: '触发事件'  //此非浏览器默认事件，是通过on()绑定的，close可关闭dialog
+      },
+      {
+      	type: 'link',	//按钮为链接,否则是button
+      	href: '/index',
+      	className: 'class-name',
+      	target: '_blank',	//可以新窗口打开
+      	trigger: 'after_click'
       }
     ]
   }
 ```
+#### Dialog.setConfig(config)
+全局配置
 
 #### method
 ##### open()
@@ -68,3 +77,6 @@ or
 ```
 ##### off()
 给dialog移除事件
+
+##### changeBody()
+对于只是改变提示信息，可复用一个dialog。用changeBody('new string')即可改变弹窗内容
