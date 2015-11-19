@@ -72,7 +72,7 @@
 			return this;
 		},
 		close: function () {
-			document.body.removeChild(this.dom);
+			if (this.dom) document.body.removeChild(this.dom);
 		},
 		on: function (type, fn) {
 			if (typeof type == 'object') {
