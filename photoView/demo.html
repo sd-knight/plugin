@@ -1,0 +1,61 @@
+<head>
+	<meta name="viewport" content="width=device-width,user-scalable=no" />
+	<link rel="stylesheet" href="photoView.css" />
+	<script src="hammer.min.js"></script>
+	<script src="photoView.js"></script>
+	<style>
+		* {margin: 0; padding: 0}
+		#test {
+			font-size: 0;
+		}
+		#test > img {
+			width: 48%;
+			margin: 6px 1%;
+		}
+		.photoView-photos > li:empty {
+			background: url("photoView_loading.gif") no-repeat center center;
+			-webkit-background-size: 64px auto;
+			background-size: 64px auto;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="test">
+		<img src="photo_thumb_1.jpg" data-src="photo_1.jpg" />
+		<img src="photo_thumb_2.jpg" data-src="photo_2.jpg" />
+		<img src="photo_thumb_3.jpg" data-src="photo_3.jpg" />
+		<img src="photo_thumb_4.jpg" data-src="photo_4.jpg" />
+	</div>
+
+<script>
+!function(){
+	var total, current;
+	var photoView = new PhotoView({
+		el: document.getElementById('test'), //or document.getElementsByTagname('img')
+		menu: '<span id="current"></span>/<span id="total"></span><div class="photoView-close" emit="close">&times;</div>',
+		afterOpen: function() {
+			if (!total) {
+				total = document.getElementById('total');
+				total.innerText = photoView.getTotal();
+			}
+			if (!current) {
+				current = document.getElementById('current');
+				current.innerText = photoView.getCurrentIndex() + 1;
+			}
+		},
+		afterChange: function(i) {
+			if (current) {
+				current.innerText = photoView.getCurrentIndex() + 1;
+			}
+		}
+	});
+
+	test.addEventListener('click', function(e){
+		if (e.target.tagName === 'IMG') {
+			photoView.open(photoView.getIndex(e.target));
+		}
+	});
+}();
+</script>
+</body>
