@@ -52,11 +52,11 @@
 			this.ul = createElement('ul', 'photoView-photos', this.wrap);
 			this.installed = false;
 			//加载菜单
+			this.menu = createElement('div', 'photoView-menu', this.wrap);
 			if (config.menu) {
-				this.menu = createElement('div', 'photoView-menu', this.wrap);
 				this.menu.innerHTML = config.menu;
 			} else {
-				this.menu = '<div class="photoView-close" emit="close">&times;</div>';
+				this.menu.innerHTML = '<div class="photoView-close" emit="close">&times;</div>';
 			}
 			//加载事件
 			events.forEach(function(event){

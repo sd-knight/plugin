@@ -22,10 +22,9 @@
 
 <body>
 	<div id="test">
-		<img src="photo_thumb_1.jpg" data-src="photo_1.jpg" />
-		<img src="photo_thumb_2.jpg" data-src="photo_2.jpg" />
-		<img src="photo_thumb_3.jpg" data-src="photo_3.jpg" />
-		<img src="photo_thumb_4.jpg" data-src="photo_4.jpg" />
+		<img src="girl_1.jpg" data-src="girl_4.jpg" />
+		<img src="girl_2.jpg" data-src="girl_5.jpg" />
+		<img src="girl_3.jpg" data-src="girl_6.jpg" />
 	</div>
 
 <script>
@@ -37,12 +36,12 @@
 		afterOpen: function() {
 			if (!total) {
 				total = document.getElementById('total');
-				total.innerText = photoView.getTotal();
 			}
+			total.innerText = photoView.getTotal();
 			if (!current) {
 				current = document.getElementById('current');
-				current.innerText = photoView.getCurrentIndex() + 1;
 			}
+			current.innerText = photoView.getCurrentIndex() + 1;
 		},
 		afterChange: function(i) {
 			if (current) {
